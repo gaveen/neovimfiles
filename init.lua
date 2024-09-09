@@ -1,0 +1,5 @@
+require("config.options")
+require("keymaps.main")
+require("config.lazy")
+require("keymaps.plugins")
+require("config.colorschemes.catppuccin")
