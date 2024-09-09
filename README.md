@@ -14,29 +14,23 @@ This repository follows a structure similar to the below.
 
 ```
 nvim/
-├─ lua/
+├─ lua/                     directory containing lua files of the setup
 │  ├─ config/
-│  │  ├─ lazy.lua
-│  │  ├─ options.lua
+│  │  ├─ colorschemes/      directory for custom configuration for colorschemes
+│  │  │  ├─ catppuccin.lua
+│  │  ├─ lazy.lua           plugin manager configuration
+│  │  ├─ options.lua        main configuration (e.g., options, commands)
 │  ├─ keymaps/
-│  │  ├─ main.lua
-│  │  ├─ plugins.lua
-│  ├─ plugins/
+│  │  ├─ main.lua           main keymaps
+│  │  ├─ plugins.lua        manually assigned custom keymaps for plugins
+│  ├─ plugins/              automatically loaded pugin/group configuration files
 │  │  ├─ bufferline.lua
 │  │  ├─ cmp.lua
 │  │  ├─ ...
 │  │  ├─ which-key.lua
-├─ init.lua
-├─ README.md
+init.lua                    main configuration, used to import other files
+README.md
 ```
-- `init.lua` is the main nvim configuration file, used here to import other configuration files in order.
-- `lua` directory holds all the other lua files for the setup.
-- `config/options.lua` is the main nvim options configuration, including custom commands.
-- `keymaps/main.lua` is the main keymaps configuration.
-- `config/lazy.lua` is the plugin manager configuration.
-- `plugins/*.lua` are plugin or plugin group configuration files that are imported by 'lazy.nvim'.
-- `keymaps/plugins.lua` has the custom keymaps manually configured for plugins.
-- `config/colorschemes/*.lua` are custom configuration for colorschemes.
 
 ## How to use
 
@@ -49,10 +43,10 @@ More information will be added in future.
 
 ### Dependencies
 
-Current external dependencies mainly reflect my current needs (e.g., wayland support, rust rust_analyzer integration).
+Current external dependencies mainly reflect my current needs (e.g., wayland support, rust_analyzer integration).
 - `ripgrep`
+- `rust_analyzer`
 - `wl-copy`
-- `rust_analyzer`.
 
 ## Future Improvements
 
