@@ -1,3 +1,5 @@
+-- Manually assign custom keymaps for plugins
+
 local map = vim.keymap.set
 local nr  = { noremap = true }
 local nrs = { noremap = true, silent = true }

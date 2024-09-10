@@ -1,3 +1,5 @@
+-- Main keymaps for core editor features and custom commands
+
 local let = vim.g
 local map = vim.keymap.set
 local nr  = { noremap = true }

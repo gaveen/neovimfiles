@@ -1,3 +1,5 @@
+-- Main configuration for editor options and custom commands
+
 local set = vim.opt
 
 -- Set basic instructions
@@ -29,21 +31,21 @@ vim.cmd([[cnoremap w!! w !sudo tee % >/dev/null]])
 
 -- Custom Command: see unsaved changes (in current buffer) as a diff
 vim.api.nvim_create_user_command('DiffOrig', function()
-  -- Get current filetype
+  -- get current filetype
   local filetype = vim.bo.filetype
-  -- Start diff mode on current buffer
+  -- start diff mode on current buffer
   vim.cmd('diffthis')
-  -- Open new vertical split, read last saved file, and remove first empty line
+  -- open new vertical split, read last saved file, and remove first empty line
   vim.cmd('vnew | r # | normal! 1Gdd')
-  -- Start diff mode on new buffer
+  -- start diff mode on new buffer
   vim.cmd('diffthis')
-  -- Set local buffer options
+  -- set local buffer options
   vim.opt_local.buftype = "nofile"
   vim.opt_local.bufhidden = "wipe"
   vim.opt_local.buflisted = false
   vim.opt_local.swapfile = false
   vim.opt_local.readonly = true
   vim.opt_local.filetype = filetype
-  -- Move to the next change
+  -- move to the next change
   vim.cmd('normal! ]c')
 end, {})
