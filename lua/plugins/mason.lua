@@ -1,17 +1,17 @@
 return {
-  "williamboman/mason.nvim",
-  "williamboman/mason-lspconfig.nvim",
-  opts = {
-    PATH = "skip",
+    "williamboman/mason.nvim",
+    "williamboman/mason-lspconfig.nvim",
+    opts = {
+        PATH = "skip",
 
-    ui = {
-      icons = {
-        package_pending = " ",
-        package_installed = " ",
-        package_uninstalled = " ",
-      },
-    },
+        ui = {
+            icons = {
+                package_pending = " ",
+                package_installed = " ",
+                package_uninstalled = " ",
+            },
+        },
 
-    max_concurrent_installers = 10,
-  }
+        max_concurrent_installers = 10,
+    }
 }

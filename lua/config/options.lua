@@ -28,24 +28,24 @@ set.expandtab = true                        -- expand tabs into spaces
 
 -- Set different tab settings for different file types
 local function set_tab_settings(tabstop, shiftwidth, expandtab)
-  vim.bo.tabstop = tabstop
-  vim.bo.softtabstop = tabstop
-  vim.bo.shiftwidth = shiftwidth
-  vim.bo.expandtab = expandtab
+    vim.bo.tabstop = tabstop
+    vim.bo.softtabstop = tabstop
+    vim.bo.shiftwidth = shiftwidth
+    vim.bo.expandtab = expandtab
 end
 
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "ruby", "javascript", "typescript" },
-  callback = function()
-    set_tab_settings(2, 2, true)  -- Ruby, JS, and TS prefer 2 spaces
-  end
+    pattern = { "ruby", "javascript", "typescript" },
+    callback = function()
+        set_tab_settings(2, 2, true)  -- Ruby, JS, and TS prefer 2 spaces
+    end
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "go" },
-  callback = function()
-    set_tab_settings(4, 4, false)  -- Go prefers tabs (noexpandtab)
-  end
+    pattern = { "go" },
+    callback = function()
+        set_tab_settings(4, 4, false)  -- Go prefers tabs (noexpandtab)
+    end
 })
 
 -- Map Command: use w!! to write file with sudo
@@ -53,21 +53,21 @@ vim.cmd([[cnoremap w!! w !sudo tee % >/dev/null]])
 
 -- Custom Command: see unsaved changes (in current buffer) as a diff
 vim.api.nvim_create_user_command('DiffOrig', function()
-  -- get current filetype
-  local filetype = vim.bo.filetype
-  -- start diff mode on current buffer
-  vim.cmd('diffthis')
-  -- open new vertical split, read last saved file, and remove first empty line
-  vim.cmd('vnew | r # | normal! 1Gdd')
-  -- start diff mode on new buffer
-  vim.cmd('diffthis')
-  -- set local buffer options
-  vim.opt_local.buftype = "nofile"
-  vim.opt_local.bufhidden = "wipe"
-  vim.opt_local.buflisted = false
-  vim.opt_local.swapfile = false
-  vim.opt_local.readonly = true
-  vim.opt_local.filetype = filetype
-  -- move to the next change
-  vim.cmd('normal! ]c')
+    -- get current filetype
+    local filetype = vim.bo.filetype
+    -- start diff mode on current buffer
+    vim.cmd('diffthis')
+    -- open new vertical split, read last saved file, and remove first empty line
+    vim.cmd('vnew | r # | normal! 1Gdd')
+    -- start diff mode on new buffer
+    vim.cmd('diffthis')
+    -- set local buffer options
+    vim.opt_local.buftype = "nofile"
+    vim.opt_local.bufhidden = "wipe"
+    vim.opt_local.buflisted = false
+    vim.opt_local.swapfile = false
+    vim.opt_local.readonly = true
+    vim.opt_local.filetype = filetype
+    -- move to the next change
+    vim.cmd('normal! ]c')
 end, {})
