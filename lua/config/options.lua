@@ -26,6 +26,28 @@ set.softtabstop = 4                         -- spaces to use as tab (editing)
 set.shiftwidth = 4                          -- spaces to use for autoindent
 set.expandtab = true                        -- expand tabs into spaces
 
+-- Set different tab settings for different file types
+local function set_tab_settings(tabstop, shiftwidth, expandtab)
+  vim.bo.tabstop = tabstop
+  vim.bo.softtabstop = tabstop
+  vim.bo.shiftwidth = shiftwidth
+  vim.bo.expandtab = expandtab
+end
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "ruby", "javascript", "typescript" },
+  callback = function()
+    set_tab_settings(2, 2, true)  -- Ruby, JS, and TS prefer 2 spaces
+  end
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "go" },
+  callback = function()
+    set_tab_settings(4, 4, false)  -- Go prefers tabs (noexpandtab)
+  end
+})
+
 -- Map Command: use w!! to write file with sudo
 vim.cmd([[cnoremap w!! w !sudo tee % >/dev/null]])
 
