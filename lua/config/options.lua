@@ -48,6 +48,23 @@ vim.api.nvim_create_autocmd("FileType", {
     end
 })
 
+-- Jump to the last cursor position when reopening a file
+vim.api.nvim_create_autocmd("BufReadPost", {
+    callback = function()
+        local last_pos = vim.fn.line([['"]])
+        if last_pos > 0 and last_pos <= vim.fn.line("$") then
+            vim.cmd("normal! g'\"")
+        end
+    end
+})
+
+-- Switch to the working directory of the open file
+vim.api.nvim_create_autocmd("BufEnter", {
+    callback = function()
+        vim.cmd("lcd %:p:h")
+    end
+})
+
 -- Map Command: use w!! to write file with sudo
 vim.cmd([[cnoremap w!! w !sudo tee % >/dev/null]])
 
