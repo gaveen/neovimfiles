@@ -21,9 +21,9 @@ return {
                     end,
                 },
                 window = {
-                    -- uncomment the following for bordered windows
-                    -- completion = cmp.config.window.bordered(),
-                    -- documentation = cmp.config.window.bordered(),
+                    -- bordered windows
+                    completion = cmp.config.window.bordered(),
+                    documentation = cmp.config.window.bordered(),
                 },
                 mapping = cmp.mapping.preset.insert({
                     ['<C-b>'] = cmp.mapping.scroll_docs(-4),
@@ -70,28 +70,28 @@ return {
 
             local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-            -- set up rust_analyzer with these capabilities
-            require('lspconfig')['rust_analyzer'].setup {
-                capabilities = capabilities,
-                settings = {
-                    ["rust-analyzer"] = {
-                        imports = {
-                            granularity = {
-                                group = "module",
-                            },
-                            prefix = "self",
-                        },
-                        cargo = {
-                            buildScripts = {
-                                enable = true,
-                            },
-                        },
-                        procMacro = {
-                            enable = true,
-                        },
-                    },
-                },
-            }
+            -- set up rust_analyzer when not using rustaceanvim
+            -- require('lspconfig')['rust_analyzer'].setup {
+            --     capabilities = capabilities,
+            --     settings = {
+            --         ["rust-analyzer"] = {
+            --             imports = {
+            --                 granularity = {
+            --                     group = "module",
+            --                 },
+            --                 prefix = "self",
+            --             },
+            --             cargo = {
+            --                 buildScripts = {
+            --                     enable = true,
+            --                 },
+            --             },
+            --             procMacro = {
+            --                 enable = true,
+            --             },
+            --         },
+            --     },
+            -- }
         end,
     }
 }
