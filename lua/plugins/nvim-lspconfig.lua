@@ -4,10 +4,20 @@ return {
 
         local lspconfig = require'lspconfig'
 
-        local on_attach = function(client)
-            require'completion'.on_attach(client)
-        end
-        -- rust_analyzer config when not using rustaceanvim
+        -- for Deno
+        lspconfig.denols.setup {
+          on_attach = on_attach,
+          root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
+        }
+
+        -- for TypeScript
+        lspconfig.ts_ls.setup {
+          on_attach = on_attach,
+          root_dir = lspconfig.util.root_pattern("package.json"),
+          single_file_support = false
+        }
+
+        -- for Rust: rust_analyzer config when not using rustaceanvim
         -- lspconfig.rust_analyzer.setup({
         --     on_attach = on_attach,
         --     settings = {
