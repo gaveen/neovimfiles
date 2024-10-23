@@ -22,3 +22,10 @@ map('n', '<leader>fh', builtin.help_tags, {})           -- help taps
 
 -- Plugin: folke/twilight.nvim
 map("n", "<F3>", ":Twilight<CR>", nr)                   -- toggle twilight
+
+-- Plugin: liuchengxu/vista.vim
+map("n", "<F6>", ":Vista nvim_lsp<CR>", nr)             -- vista using lsp
+map("n", "<F7>", ":Vista!!<CR>", nr)                    -- toggle vista
+
+-- Plugin: preservim/tagbar
+map("n", "<F8>", ":TagbarToggle<CR>", nr)               -- toggle tagbar
