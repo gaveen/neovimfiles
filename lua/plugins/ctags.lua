@@ -1,6 +1,11 @@
 -- Depends on system package: Universal Ctags
 return {
-    "ludovicchabant/vim-gutentags",
+    {
+        "ludovicchabant/vim-gutentags",
+        config = function()
+            vim.g.gutentags_cache_dir = '/tmp'
+        end,
+    },
 
     {
         "preservim/tagbar",
