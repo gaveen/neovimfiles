@@ -60,12 +60,12 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 
 -- Switch to the working directory of the open file
 vim.api.nvim_create_autocmd("BufEnter", {
-  pattern = "*",
-  callback = function()
-    if vim.bo.buftype ~= "terminal" then
-      vim.cmd("lcd %:p:h")
+    pattern = "*",
+    callback = function()
+        if vim.bo.buftype ~= "terminal" then
+            vim.cmd("lcd %:p:h")
+        end
     end
-  end
 })
 
 -- Map Command: use w!! to write file with sudo
