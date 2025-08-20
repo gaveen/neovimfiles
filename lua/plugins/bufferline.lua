@@ -23,7 +23,7 @@ return {
                 },
             },
             -- use highlights from colorscheme instead of manual config
-            highlights = require("catppuccin.groups.integrations.bufferline").get {
+            highlights = require("catppuccin.groups.integrations.bufferline").get_theme() {
                 styles = { "no_italic", "bold" },
             },
         })
