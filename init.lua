@@ -163,6 +163,6 @@ map("n", "<F5>", ":Twilight<CR>", nr)                   -- toggle twilight
 
 -- Plugin: nvim-treesitter/nvim-treesitter
 vim.api.nvim_create_autocmd('FileType', {
-  pattern = { '<filetype>' },                           -- syntax highlighting
-  callback = function() vim.treesitter.start() end,
+    pattern = { '*' },                                  -- syntax highlighting
+    callback = function() vim.treesitter.start() end,
 })
