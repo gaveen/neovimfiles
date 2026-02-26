@@ -1,14 +1,15 @@
 return {
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
+
     opts = {
         PATH = "skip",
 
         ui = {
             icons = {
-                package_pending = " ",
-                package_installed = " ",
-                package_uninstalled = " ",
+                package_pending = "➜",
+                package_installed = "✓",
+                package_uninstalled = "✗",
             },
         },
 

@@ -9,7 +9,7 @@ I'm trying to use nvim as my primary development environment. Therefore, it's co
 
 ## How to use
 
-- Use the repo as the 'nvim' directory (e.g., `~/.config/nvim/`).
+- Use the repo as the 'nvim' directory. e.g., `git clone https://github.com/gaveen/neovimfiles ~/.config/nvim`
 - Plugins will be automatically installed on the first subsequent nvim run.
 - Once plugins and dependencies are ready, run `:Lazy update` to update.
 - Leader key is "Space".
@@ -18,11 +18,11 @@ More information will be added in future.
 
 ### Dependencies
 
-Current external dependencies mainly reflect my current needs (e.g., copy to clipboard while using wayland, rust_analyzer integration).
+Current external dependencies mainly reflect my current needs (e.g., copy to clipboard while using wayland, etc.)
 - `wl-copy`         e.g., $ sudo dnf install wl-clipboard
 - `ripgrep`         e.g., $ sudo dnf install ripgrep
-- `universal-ctags` e.g., $ sudo dnf install ctags
-- `rust_analyzer`   e.g., $ rustup component add rust-analyzer
+- `curl`            e.g., $ sudo dnf install curl
+- `tar`             e.g., $ sudo dnf install tar
 
 
 ## Structure
@@ -31,25 +31,17 @@ This repository is organized into the following structure.
 
 ```
 nvim/
-├── README.md                   This file
-├── init.lua                    Main file, used here to import other files
-└── lua/                        Directory containing lua files of the setup
+├── README.md                   This README file
+├── init.lua                    Main config file of the setup
+└── lua/                        Directory containing additional lua files
     ├── config/
-    │   ├── options.lua         Main config file (e.g., options, commands)
     │   ├── lazy.lua            Plugin Manager configuration
-    │   └── colorschemes/       Directory for custom configs for colorschemes
-    │       ├── catppuccin.lua
-    │       └── ...
-    ├── keymaps/
-    │   ├── main.lua            Main keymaps of the setup
-    │   └── plugins.lua         Manually assigned custom keymaps for plugins
-    └── plugins/                Directory for autoloading plugins/plugin groups
+    └── plugins/                Directory for autoloading plugins
         ├── bufferline.lua
         ├── leap.lua
         ├── ...
         └── ...
 ```
-The order in which these configuration files are imported (e.g., in 'nvim/init.lua') is important because the latter imports may depend on the former ones. Therefore, any incorrect lua file can prevent the setup from working as intended.
 
 When `lazy.nvim` is imported, it in turn loads all *.lua files under 'nvim/lua/plugins/' directory automatically, as long as they are valid for loading plugins.
 

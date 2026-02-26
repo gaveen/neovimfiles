@@ -1,5 +1,6 @@
 return {
     url = "https://codeberg.org/andyg/leap.nvim",
+
     opts = function()
         -- uncomment next line to remap 's' and 'S' which can be problematic
         -- require('leap').create_default_mappings()

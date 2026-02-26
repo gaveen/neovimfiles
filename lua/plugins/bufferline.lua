@@ -2,11 +2,10 @@ return {
     'akinsho/bufferline.nvim',
     version = "*",
     dependencies = 'nvim-tree/nvim-web-devicons',
-    after = "catppuccin",   -- load after colorscheme
+
     config = function()
         local bufferline = require('bufferline')
-        local macchiato = require("catppuccin.palettes").get_palette "macchiato"
-        bufferline.setup({
+        bufferline.setup {
             options = {
                 themable = true,
                 numbers = 'buffer_id',
@@ -22,10 +21,6 @@ return {
                     }
                 },
             },
-            -- use highlights from colorscheme instead of manual config
-            highlights = require("catppuccin.special.bufferline").get_theme() {
-                styles = { "no_italic", "bold" },
-            },
-        })
+        }
     end,
 }
