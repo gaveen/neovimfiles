@@ -6,7 +6,7 @@ return {
 
     config = function()
         require('onedark').setup {
-            style = 'deep'
+            style = 'dark'
         }
         require('onedark').load()
     end
